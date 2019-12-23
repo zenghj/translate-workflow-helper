@@ -1,0 +1,18 @@
+{
+  "loading": "加载中",
+  "noMore": "没有游戏了",
+  "loadingFail": {
+    "msg1": "加载失败",
+    "msg2": "请检查你的网络并且再次刷新"
+  },
+  "refresh": "再次刷新",
+  "notFound": "当前页面不可见",
+  "backToHome": "回到首页",
+  "players": "{players, plural, zero {# players} one {# player} two {# players} few {# players} many {# players} other {# players}}个用户正在玩" ,
+  "highlyRecommend": "强烈推荐",
+  "mustPlay": "每日必玩游戏",
+  "hotGames": "热门游戏",
+  "cancel": "关闭",
+  "playBtn": "玩",
+  "bestGame": "为你准备的热门游戏"
+}
