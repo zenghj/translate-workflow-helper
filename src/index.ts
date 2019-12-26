@@ -10,10 +10,22 @@ import * as path from 'path'
 import { getSubDirNames, fsPromises } from './utils'
 
 interface SyncOptions {
+  // 翻译源文件目录
   translationsRootPath: string;
+  // 翻译源文件名
   translationFileName: string;
+  // 输入目录
   outputPath: string;
+  /**
+   * 输出文件名称映射map
+   * {
+   * values: 'en',
+   * values-zh-rCN: 'cn'
+   * }
+   */
   outputNameMap: Object;
+  // 自定义文件内容转换函数
+  transform?: (content:string, t: Translation) => string
 }
 
 class Translation {
@@ -94,9 +106,14 @@ class SyncTaskRunner {
       if (t.content == null) {
         this.errors.push(new Error(t.originalDirName + 'translation content is empty!'))
       }
+      const transform = this.options.transform
+      let content = t.content
+      if (transform) {
+        content = transform(content, t)
+      }
       await fsPromises.writeFile(
         path.resolve(this.options.outputPath, t.outputName),
-        t.content
+        content
       )
     }
   }

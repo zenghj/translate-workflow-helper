@@ -135,7 +135,7 @@ var SyncTaskRunner = /** @class */ (function () {
     };
     SyncTaskRunner.prototype.sync = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var i, t;
+            var i, t, transform, content;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -147,7 +147,12 @@ var SyncTaskRunner = /** @class */ (function () {
                         if (t.content == null) {
                             this.errors.push(new Error(t.originalDirName + 'translation content is empty!'));
                         }
-                        return [4 /*yield*/, utils_1.fsPromises.writeFile(path.resolve(this.options.outputPath, t.outputName), t.content)];
+                        transform = this.options.transform;
+                        content = t.content;
+                        if (transform) {
+                            content = transform(content, t);
+                        }
+                        return [4 /*yield*/, utils_1.fsPromises.writeFile(path.resolve(this.options.outputPath, t.outputName), content)];
                     case 2:
                         _a.sent();
                         _a.label = 3;
