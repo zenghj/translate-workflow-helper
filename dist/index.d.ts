@@ -10,6 +10,7 @@ interface SyncOptions {
      * }
      */
     outputNameMap: Object;
+    excludes?: string[];
     transform?: (content: string, t: Translation) => string;
 }
 declare class Translation {

@@ -7,8 +7,11 @@ test('basic usage', async () => {
     translationFileName: 'zh.json',
     outputPath: path.resolve(__dirname, './output'),
     outputNameMap: {
-      'values-zh-rCN': 'zh'
-    }
+      'values': 'en'
+    },
+    excludes: [
+      'values-zh-rCN'
+    ]
   })
   expect(result).toBe(true)
 })

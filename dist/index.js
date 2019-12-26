@@ -88,13 +88,15 @@ var SyncTaskRunner = /** @class */ (function () {
     }
     SyncTaskRunner.prototype.preSync = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var translationDirs, i;
+            var excludes, translationDirs, i;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, utils_1.getSubDirNames(this.options.translationsRootPath)];
+                    case 0:
+                        excludes = this.options.excludes || [];
+                        return [4 /*yield*/, utils_1.getSubDirNames(this.options.translationsRootPath)];
                     case 1:
-                        translationDirs = _a.sent();
+                        translationDirs = (_a.sent()).filter(function (item) { return !excludes.includes(item); });
                         this.translations = translationDirs.map(function (dirName) { return new Translation({
                             rootPath: _this.options.translationsRootPath,
                             originalDirName: dirName,

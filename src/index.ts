@@ -24,6 +24,8 @@ interface SyncOptions {
    * }
    */
   outputNameMap: Object;
+  // 需要排除的特定目录
+  excludes?: string[],
   // 自定义文件内容转换函数
   transform?: (content:string, t: Translation) => string
 }
@@ -72,7 +74,8 @@ class SyncTaskRunner {
   }
 
   async preSync() {
-    const translationDirs = await getSubDirNames(this.options.translationsRootPath)
+    const excludes = this.options.excludes || []
+    const translationDirs = (await getSubDirNames(this.options.translationsRootPath)).filter(item => !excludes.includes(item))
     this.translations = translationDirs.map(dirName => new Translation({
       rootPath: this.options.translationsRootPath,
       originalDirName: dirName,

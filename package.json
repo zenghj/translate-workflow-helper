@@ -16,7 +16,7 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage"
   },
-  "version": "0.0.2",
+  "version": "0.0.4",
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.21",
