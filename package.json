@@ -1,6 +1,6 @@
 {
   "name": "translate-workflow-helper",
-  "description": "A demo project",
+  "description": "Help to sync translation drafts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -17,6 +17,11 @@
     "test:coverage": "jest --coverage"
   },
   "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenghj/translate-workflow-helper.git"
+  },
+  "homepage": "https://github.com/zenghj/translate-workflow-helper",
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.21",
